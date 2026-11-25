@@ -1,0 +1,292 @@
+/* ASFB Floating Buttons - Refined Editorial UI */
+.asfb-fb-container {
+    --asfb-fb-size: 48px;
+    --asfb-fb-bottom: 24px;
+    --asfb-fb-side: 24px;
+    --asfb-fb-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    position: fixed;
+    bottom: var(--asfb-fb-bottom);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Plus Jakarta Sans", sans-serif;
+}
+
+.asfb-fb-pos-right {
+    right: var(--asfb-fb-side);
+    align-items: flex-end;
+}
+
+.asfb-fb-pos-left {
+    left: var(--asfb-fb-side);
+    align-items: flex-start;
+}
+
+.asfb-fb-size-sm {
+    --asfb-fb-size: 42px;
+}
+
+.asfb-fb-size-md {
+    --asfb-fb-size: 48px;
+}
+
+.asfb-fb-size-lg {
+    --asfb-fb-size: 54px;
+}
+
+.asfb-fb-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.asfb-fb-button {
+    width: var(--asfb-fb-size);
+    height: var(--asfb-fb-size);
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1;
+    color: #FFFFFF;
+    cursor: pointer;
+    box-shadow:
+        0 8px 20px -4px rgba(15, 23, 42, 0.24),
+        0 2px 6px -1px rgba(15, 23, 42, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    transition:
+        transform 0.24s var(--asfb-fb-ease),
+        box-shadow 0.24s var(--asfb-fb-ease),
+        opacity 0.22s var(--asfb-fb-ease),
+        visibility 0.22s var(--asfb-fb-ease);
+    position: relative;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.asfb-fb-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 26px -6px rgba(15, 23, 42, 0.30),
+        0 4px 10px -2px rgba(15, 23, 42, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.asfb-fb-button:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.asfb-fb-button:focus-visible {
+    outline: 2px solid #0F172A;
+    outline-offset: 3px;
+}
+
+.asfb-fb-button img {
+    width: 52%;
+    height: 52%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.14));
+}
+
+.asfb-fb-button svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: block;
+    pointer-events: none;
+}
+
+/* Scroll to top */
+#asfb-fb-scroll-top {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.92);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+#asfb-fb-scroll-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+/* Refined Tooltip Pill with Arrow */
+.asfb-fb-label {
+    position: absolute;
+    top: 50%;
+    background-color: #0F172A;
+    color: #F8FAFC;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.28);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s var(--asfb-fb-ease), transform 0.2s var(--asfb-fb-ease);
+}
+
+.asfb-fb-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    background-color: #0F172A;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.asfb-fb-pos-right .asfb-fb-label {
+    right: calc(100% + 12px);
+    transform: translate(6px, -50%);
+}
+
+.asfb-fb-pos-right .asfb-fb-label::after {
+    right: -4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.asfb-fb-pos-left .asfb-fb-label {
+    left: calc(100% + 12px);
+    transform: translate(-6px, -50%);
+}
+
+.asfb-fb-pos-left .asfb-fb-label::after {
+    left: -4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.asfb-fb-button:hover .asfb-fb-label,
+.asfb-fb-button:focus-visible .asfb-fb-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+}
+
+/* Speed Dial Collapsible Mode */
+.asfb-fb-toggle-btn {
+    background-color: #0F172A;
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+.asfb-fb-toggle-btn .asfb-fb-icon-close {
+    display: none;
+}
+
+.asfb-fb-is-collapsible .asfb-fb-channels {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(12px) scale(0.92);
+    max-height: 0;
+    overflow: hidden;
+    transition:
+        opacity 0.22s var(--asfb-fb-ease),
+        transform 0.22s var(--asfb-fb-ease),
+        max-height 0.22s var(--asfb-fb-ease);
+}
+
+.asfb-fb-is-collapsible.is-expanded .asfb-fb-channels {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    max-height: 420px;
+    overflow: visible;
+}
+
+.asfb-fb-is-collapsible.is-expanded .asfb-fb-toggle-btn .asfb-fb-icon-open {
+    display: none;
+}
+
+.asfb-fb-is-collapsible.is-expanded .asfb-fb-toggle-btn .asfb-fb-icon-close {
+    display: block;
+}
+
+/* Subtle Sonar Ripple */
+.asfb-fb-ripple::before,
+.asfb-fb-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    z-index: -1;
+    pointer-events: none;
+    animation: asfb-fb-sonar 2.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.asfb-fb-ripple::after {
+    animation-delay: 0.9s;
+}
+
+@keyframes asfb-fb-sonar {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.38;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.7);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .asfb-fb-device-desktop {
+        display: none !important;
+    }
+
+    .asfb-fb-label {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .asfb-fb-device-mobile {
+        display: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .asfb-fb-ripple::before,
+    .asfb-fb-ripple::after {
+        animation: none !important;
+        display: none !important;
+    }
+
+    .asfb-fb-button,
+    .asfb-fb-label,
+    .asfb-fb-channels {
+        transition: none !important;
+    }
+}
+
+@media print {
+    .asfb-fb-container {
+        display: none !important;
+    }
+}
